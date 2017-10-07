@@ -7,7 +7,7 @@
  Create a web app/game 
  
  *Period
- 3 weeks starting starting oct-6-2017
+ 3 weeks starting oct-6-2017
  
  *Team and roles
  **Timon Christiansen/ SE
