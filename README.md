@@ -1,15 +1,15 @@
 # Code_Project_01
  
- #Beta Readme.md version, must be updated by Product Managers
- ............................................................
+ # Beta Readme.md version, must be updated by Product Managers
+ -----
  
- ##Project
+ ## Project
  Create a web app/game 
  
- ##Period
+ ## Period
  3 weeks starting oct-6-2017
  
- ##Team and roles
+ ## Team and roles
  * Timon Christiansen/ SE
  * JOsef Grieb/ SE
  * Elias Khattar/ ID
