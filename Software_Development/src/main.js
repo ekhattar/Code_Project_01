@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import App from './App.vue';
-import VueRouter from 'vue-router';
-import Login from './login.vue';
-import Quiz from './quiz.vue';
-import Welcome from './components/welcome.vue';	
-import Leaderboard from './components/leaderboard.vue';
+import Router from 'vue-router';
+import Login from './Login.vue';
+import Quiz from './Quiz.vue';
+import Welcome from './components/Welcome.vue';
+import Leaderboard from './components/Leaderboard.vue';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
 const routes = [
 	{ path: '/quiz', component: Quiz},
@@ -15,7 +15,7 @@ const routes = [
 	{ path: '/', component: Login},
 ];
 
-const router = new VueRouter({
+const router = new Router({
 	routes,
 	mode: 'history'
 });
