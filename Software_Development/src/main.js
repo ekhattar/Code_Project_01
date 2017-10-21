@@ -6,6 +6,7 @@ import Quiz from './Quiz.vue';
 import Welcome from './components/Welcome.vue';
 import Leaderboard from './components/Leaderboard.vue';
 
+Window.Event = new Vue();
 Vue.use(Router);
 
 const routes = [
