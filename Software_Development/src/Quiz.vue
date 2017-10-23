@@ -2,26 +2,26 @@
   <div>
     <countdown v-if="display==='Countdown'"></countdown>
     <ingame v-if="display==='Ingame'"></ingame>
-    <test v-if="display==='Test'"></test>
+    <result v-if="display==='Result'"></result>
   </div>
 </template>
 
 <script>
 import Countdown from './components/Countdown.vue';
 import Ingame from './components/Ingame.vue';
-import Test from './components/Test.vue';
+import Result from './components/Result.vue';
 import {Event} from './event.js';
 export default {
   name: 'app',
   components: { Countdown,
                 Ingame,
-                Test },
+                Result },
   data () {
     
     return {
       msg: 'Welcome to Your Vue.js App',
       changeTemp: '',
-      display: 'Countdown',
+      display: 'Ingame',
     }
   },
   methods: {
