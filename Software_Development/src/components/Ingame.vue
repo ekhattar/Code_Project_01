@@ -32,15 +32,12 @@
                 </li>
             </ul>
         </div>
-
     </div>
 
     <!-- Countdown -->
     <div v-else class="container1">
         <p>{{counter}}</p>
     </div>
-
-
 </template>
 
 <script>
