@@ -3,3 +3,5 @@ node_modules/
 dist/
 !example/
 .DS_Store
+npm-debug.log
+yarn.lock
