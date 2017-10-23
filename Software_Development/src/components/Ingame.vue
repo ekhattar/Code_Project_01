@@ -15,8 +15,6 @@
     <div v-else class="container1">
             <p>{{counter}}</p>
     </div>
-
-
 </template>
 
 <script>

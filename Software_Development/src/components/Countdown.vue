@@ -34,8 +34,8 @@
 	 }
 </script>
 
-<style>
-	.button {
-  		font-size: 5em;
-  	}	
+<style scoped lang="sass">
+	.button
+		background: pink
+		margin: 32px
 </style>
