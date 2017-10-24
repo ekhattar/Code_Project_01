@@ -7,38 +7,37 @@
 </template>
 
 <script>
-import Countdown from './components/Countdown.vue';
-import Ingame from './components/Ingame.vue';
-import Result from './components/Result.vue';
-import {Event} from './event.js';
+import Countdown from "./components/Countdown.vue";
+import Ingame from "./components/Ingame.vue";
+import Result from "./components/Result.vue";
+import { Event } from "./event.js";
+
 export default {
-  name: 'app',
-  components: { Countdown,
-                Ingame,
-                Result },
-  data () {
-    
+  name: "app",
+  components: {
+    Countdown,
+    Ingame,
+    Result
+  },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      changeTemp: '',
-      display: 'Ingame',
-    }
+      msg: "Welcome to Your Vue.js App",
+      changeTemp: "",
+      display: "Ingame"
+    };
   },
   methods: {
-      changetemp () {
-        
-        console.log(changeTemp)
-        this.display = changeTemp;
-      }
-    },
-  mounted () {
-      Event.$on('change', (changeTemp) => {
-        this.display = changeTemp;
-      })
+    changetemp() {
+      console.log(changeTemp);
+      this.display = changeTemp;
+    }
+  },
+  mounted() {
+    Event.$on("change", changeTemp => {
+      this.display = changeTemp;
+    });
   }
-
-
-}
+};
 </script>
 
 <style>
