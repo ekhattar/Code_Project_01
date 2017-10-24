@@ -26,5 +26,8 @@
 </script>
 
 <style>
-	
+	.normal {
+        width: 300px;
+        height: 20px;
+    }
 </style>

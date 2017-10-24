@@ -9,13 +9,11 @@
 <script>
 import Countdown from './components/Countdown.vue';
 import Ingame from './components/Ingame.vue';
-import Result from './components/Result.vue';
 import {Event} from './event.js';
 export default {
   name: 'app',
   components: { Countdown,
-                Ingame,
-                Result },
+                Ingame},
   data () {
     
     return {
