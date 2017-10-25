@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>Welcome</h1>
-		<a href="/quiz" class="buttonlink"> 
+		<a href="/quiz" class="buttonlink" >
 			 Play
 		</a>
 		<a href="/leaderboard" class="buttonlink"> 
