@@ -1,6 +1,7 @@
 <template>
 	<div>
         <p style="text-align: center">Correct Answer</p>
+        <p style="text-align: center">You got {{ gain }} points!</p>
         <ul>
             <li>
                 <button class="normal" @click="onNextQuestion()">Next Question</button>
@@ -22,7 +23,8 @@
 	 		}
 	 	},
 		props: ['onNextQuestion',
-				'onEndGame']
+				'onEndGame',
+				'gain']
 	}	
 </script>
 
