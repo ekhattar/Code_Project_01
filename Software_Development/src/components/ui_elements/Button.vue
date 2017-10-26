@@ -1,15 +1,14 @@
 <script>
 export default {
-    props: [""]
+    props: ["title","onClick"]
 };
 </script>
 
-
 <template>
-	<button></button>
+	<button @click="onClick">{{title}}</button>
 </template>
 
-
 <style scoped lang="sass">
-
+    button
+        background: pink
 </style>

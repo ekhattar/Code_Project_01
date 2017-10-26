@@ -3,20 +3,17 @@
         <p style="text-align: center">Correct Answer</p>
         <p style="text-align: center">You got {{ gain }} points!</p>
         <ul>
-            <li>
-                <button class="normal" @click="onNextQuestion()">Next Question</button>
-            </li>
-            <li>
-                <button type="button" class="normal" @click="onEndGame()">End Game</button>
-            </li>
+            <uiButton v-bind:onClick="() => {onNextQuestion()}" title="Next Question"></uiButton>
         </ul>
     </div>
 </template>
 
 <script>
 	import {Event} from '../event.js'
+    import uiButton from "./ui_elements/Button.vue";
 	 export default {
 	 	name: 'posresult',
+        components: {uiButton},
 	 	data() {
 	 		return {
 	 			name: 'posresult',
