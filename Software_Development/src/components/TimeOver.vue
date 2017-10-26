@@ -13,23 +13,22 @@
 </template>
 
 <script>
-	import {Event} from '../event.js'
-	 export default {
-	 	name: 'timeover',
-	 	data() {
-	 		return {
-	 			name: 'timeover',
-	 		}
-	 	},
-		props: ['onNextQuestion',
-				'onEndGame']
-	}	
+import { Event } from "../event.js";
+export default {
+    name: "timeover",
+    data() {
+        return {
+            name: "timeover"
+        };
+    },
+    props: ["onNextQuestion", "onEndGame"]
+};
 </script>
 
 <style>
-	.normal {
-        -webkit-appearance: button;
-        width: 300px;
-        height: 20px;
-    }
+.normal {
+    -webkit-appearance: button;
+    width: 300px;
+    height: 20px;
+}
 </style>
