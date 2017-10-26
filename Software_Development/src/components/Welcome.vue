@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Http from '../http-rest.js';
 	import {Event} from '../event.js'
 	 export default {
 	 	data() {
@@ -24,9 +25,22 @@
 	 			Event.$emit('change',destTemp);
 	 			console.log(destTemp)
 	 		}
-	 	}
-	 	
-	 }
+	 	},
+	 	// mounted() {
+	 	// 		   //quiz-question?questionId=3&questionId=4&questionId=5
+	  //   Http.get(`/quiz-question?questionId=100`)
+	  //   	.then(response => {
+	  //     		//JSON responses are automatically parsed.
+	  //     		//response.addHeader("Access-Control-Allow-Origin", "*");
+	  //     		this.posts = response.data;
+	  //     		console.log(this.posts)
+	  //   	})
+	  //   		.catch(e => {
+	  //     		this.errors.push(e);
+	  //   	})
+		 	
+		 // }
+	}
 </script>
 
 <style>
