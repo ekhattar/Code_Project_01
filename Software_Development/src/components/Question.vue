@@ -4,6 +4,7 @@
 	    <br>
 	    <br>
 	    <ul>
+	    	<li> {{ timer }}</li>
 	        <li class="ab"><button class="btn" @click="onClick('A')">A</button></li>
 	        <li class="ab"><button class="btn" @click="onClick('B')">B</button></li>
 	        <li class="ab"><button class="btn" @click="onClick('C')">C</button></li>
@@ -21,7 +22,8 @@ export default {
             name: "question"
         };
     },
-    props: ["onClick"]
+    props: ["onClick",
+    		"timer"]
 };
 </script>
 

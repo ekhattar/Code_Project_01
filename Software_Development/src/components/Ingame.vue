@@ -8,7 +8,7 @@
         </ul>
         <gameover v-if="gameOver" v-bind:score="score"></gameover>
         <timeover v-else-if="isOver" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></timeover>
-        <question v-else-if="!isQuestionDone" v-bind:onClick="(arg) => {click(arg)}"></question>
+        <question v-else-if="!isQuestionDone" v-bind:timer="timer" v-bind:onClick="(arg) => {click(arg)}"></question>
         <posresult v-else-if="isRight" v-bind:gain="gain" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
         <negresult v-else-if="!isRight" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
     </div>
