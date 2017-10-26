@@ -6,7 +6,7 @@
                 <button class="normal" @click="onNextQuestion()">Next Question</button>
             </li>
             <li>
-                <button class="normal">End Game</button>
+                <button type="button" class="normal" @click="onEndGame()">End Game</button>
             </li>
         </ul>
     </div>
@@ -15,16 +15,20 @@
 <script>
 	import {Event} from '../event.js'
 	 export default {
-	 	name: 'result',
+	 	name: 'posresult',
 	 	data() {
 	 		return {
-	 			name: 'result',
+	 			name: 'posresult',
 	 		}
 	 	},
-		props: ['onNextQuestion']
+		props: ['onNextQuestion',
+				'onEndGame']
 	}	
 </script>
 
 <style>
-	
+	.normal {
+        width: 300px;
+        height: 20px;
+    }
 </style>

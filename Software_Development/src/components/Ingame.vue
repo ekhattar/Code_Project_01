@@ -2,37 +2,47 @@
     <div v-if="isCounterStarted">
         <ul>
             <li v-if="false" class="life" v-for="life in lifes" v-text="life"></li>
-            <li class="score">Score: {{ score }}</li>
+            <li v-if="!gameOver" class="score">Score: {{ score }}</li>
+            <li v-if="!isQuestionDone">Time: {{ timer }}</li>
         </ul>
-        <div v-if="!isQuestionDone">
-            <question v-bind:onClick="(arg) => {click(arg)}"></question>
-        </div>
-        <div v-else>
-            <result v-bind:onNextQuestion="() => {nextQuestion()}"></result>
-        </div>
+        <gameover v-if="gameOver" v-bind:score="score"></gameover>
+        <timeover v-else-if="isOver" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></timeover>
+        <question v-else-if="!isQuestionDone" v-bind:onClick="(arg) => {click(arg)}"></question>
+        <posresult v-else-if="isRight" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
+        <negresult v-else-if="!isRight" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
     </div>
 
     <div v-else class="container1">
-            <p>{{counter}}</p>
+            <p>{{ counter }}</p>
     </div>
 </template>
 
 <script>
-import Result from './Result.vue';
+import Posresult from './PosResult.vue';
+import Negresult from './NegResult.vue';
+import Timeover from './TimeOver.vue';
 import Question from './Question.vue';
+import Gameover from './GameOver.vue';
     export default {
         name: 'ingame',
-        components: {Result,
-                    Question},
+        components: {Posresult,
+                    Negresult,
+                    Timeover,
+                    Question,
+                    Gameover},
         data() {
             return {
                 name: 'ingame',
                 lifes: ['O', 'O', 'O'],
                 score: 0,
-                time: 15,
+                timer: 16,
                 isCounterStarted: false,
                 isQuestionDone: false,
-                counter: 3
+                isRight:false,
+                isOver:false,
+                gameOver:false,
+                counter: 3,
+                answers: [],
             }
         },
 
@@ -40,10 +50,36 @@ import Question from './Question.vue';
             click(answer) {
                 if(answer === 'A') {
                     this.isQuestionDone = true;
+                    this.isRight = true;
+                    this.score+=1;
+                } else {
+                    this.isQuestionDone = true;
+                    this.isRight = false;
                 }
-            },
+
+            },        
             nextQuestion() {
                 this.isQuestionDone = false;
+                this.isOver = false;
+                this.timer= 16;
+                this.ingameTimer();
+            },
+            endGame() {
+                this.gameOver = true;
+                console.log("It is Over!!!")
+            },
+            ingameTimer() {
+                console.log(this.timer)
+                if (this.timer >=2 && this.isQuestionDone === false) {
+                    this.timer -=1;
+                    setTimeout(this.ingameTimer, 1000);
+                } else if (this.isQuestionDone === false) {
+                    console.log("HAPPY NEW YEAR");
+                    this.isQuestionDone = true;
+                    this.isOver = true;
+                } else {
+                    this.timer = 0; 
+                };
             }
         },
 
@@ -56,6 +92,16 @@ import Question from './Question.vue';
                 if (this.counter === 0) {
                     console.log("HAPPY NEW YEAR!!");
                     this.isCounterStarted = true;
+                    this.ingameTimer();
+//                    setInterval(() => {
+//                        this.timer -= 1;
+//                        if (this.timer === 0) {
+//                            console.log("HAPPY NEW YEAR");
+//                            this.isQuestionDone= true;
+//                            this.isOver= true;
+//                            this.timer= 15;
+//                        }
+//                    }, 1000);
                 }
             }, 1000);
         }
