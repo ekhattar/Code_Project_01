@@ -4,7 +4,7 @@
         <p style="text-align: center">Your Score is: {{ score }}</p>
         <ul>
             <li>
-                <router-link to="/leaderboard">Submit Score</router-link>
+                <button class="normal" @click="submitScore">Submit Score</button>
             </li>
             <li>
                 <router-link to="/welcome">Main Menu</router-link>
@@ -14,16 +14,35 @@
 </template>
 
 <script>
-import { Event } from "../event.js";
-export default {
-    name: "gameover",
-    data() {
-        return {
-            name: "gameover"
-        };
-    },
-    props: ["onNextQuestion", "score"]
-};
+	import Http from '../http-rest.js';
+	import {Event} from '../event.js';
+	export default {
+	 	name: 'gameover',
+	 	data() {
+	 		return {
+	 			name: 'gameover',
+	 			email: 'timon@test',
+	 			url: '/quiz-result?',
+	 		}
+	 	},
+		props: ['onNextQuestion',
+				'score'],
+		methods: {
+			submitScore () {
+				console.log('Post')
+				this.url = this.url + 'points='+this.score+'&email='+this.email;
+				Http.post(this.url)
+				.then(function (response) {
+				    console.log(response);
+				    path = '/leaderboard';
+				})
+				.catch(function (error) {
+				    console.log(error);
+				});
+			},
+
+		}
+	}	
 </script>
 
 <style>

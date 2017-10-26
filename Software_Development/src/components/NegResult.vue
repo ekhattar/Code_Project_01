@@ -1,6 +1,7 @@
 <template>
 	<div>
         <p style="text-align: center">Incorrect Answer</p>
+        <p style="text-align: center">You lost 1 Life</p>
         <ul>
             <li>
                 <button class="normal" @click="onNextQuestion()">Next Question</button>
