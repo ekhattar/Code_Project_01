@@ -1,12 +1,77 @@
 <template>
 	<div class="container-result">
         <p style="text-align: center" class="correct"><span class="white">Yeah that’s,</br></span> CORRECT!</p>
-        <p style="text-align: center">You got {{ gain }} points!</p>
-        
-            <uiButton class="btn2" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>
-        
+        <div class="points"> + {{ gain }} Points!</div>
+        <uiButton class="btn2" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>
     </div>
 </template>
+
+<style lang="sass">
+
+    .container-result
+        height: calc(100vh - 58px - 24px)
+        display: flex
+        justify-content: center
+        flex-direction: column
+
+    .points
+        width: calc(100% - 48px - 48px)
+        background: linear-gradient(#45D989, #1FB363)
+        border: 1px solid #7CFCB8
+        margin-left: auto
+        margin-right: auto
+        padding:
+            top: 24px
+            bottom: 24px
+            left: 16px
+            right: 16px
+        text-align: center
+        color: white
+        font:   
+            family: "Roboto Slab"
+            size: 32px
+            weight: bold
+        letter-spacing: 1.2px
+        border-radius: 6px
+
+    .btn2
+        position: absolute
+        bottom: 24px
+        left: 50%
+        transform: translateX(-50%)
+        display: block
+
+    @keyframes scaleIn
+        0%
+            transform: scale(3)
+        70%
+            transform: scale(0.85)
+        100%
+            transform: scale(1)
+
+    .correct
+        animation: scaleIn
+        animation-duration: 0.4s
+        animation-easing: easeInOutQuad
+
+        margin-bottom: 48px
+
+        font-family: Roboto Slab;
+        font-style: normal;
+        font-weight: bold;
+        line-height: normal;
+        font-size: 42px;
+        text-align: center;
+
+        color: #1FB363;
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+
+    .white
+        color: #FFFFFF;
+        font-weight: normal;
+        font-size: 32px;
+
+</style>
 
 <script>
 import { Event } from "../event.js";
@@ -22,37 +87,3 @@ export default {
     props: ["onNextQuestion", "onEndGame", "gain"]
 };
 </script>
-
-
-<style lang="sass">
-    .btn2
-        position: absolute
-        bottom: 24px
-        left: 50%
-        transform: translateX(-50%)
-        display: block
-
-    .correct
-        /* Yeah that’s, CORRECT! */
-
-        position: absolute;
-        width: 260px;
-        height: 98px;
-        left: 59px;
-        top: 164px;
-
-        font-family: Roboto Slab;
-        font-style: normal;
-        font-weight: bold;
-        line-height: normal;
-        font-size: 42px;
-        text-align: center;
-
-        color: #1FB363;
-        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    .white
-        color: #FFFFFF;
-        font-weight: normal;
-        font-size: 32px;
-
-</style>

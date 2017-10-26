@@ -24,28 +24,27 @@
 </template>
 
 <style scoped lang="sass">
-    .slideInLeft-enter, .slideInLeft-enter-active,
+
+    .slideInLeft-enter, .slideInLeft-enter-active
         transition: all 0.3s ease-out
         transform: translateX(100%)
         opacity: 0
-    .slideInLeft-leave, .slideInLeft-enter-to 
+
+    .slideInLeft-enter-to, 
         transform: translateX(0%)
         opacity: 1
+        transition: all 0.3s ease-out
+
+    .fade-enter, .fade-enter-active
+        transition: all 0.8s ease-out
+        opacity: 0
+
+    .fade-enter-to
+        opacity: 1 
+        
 </style>
 
 <script>
-// [
-//  {
-//   'Who is he?',
-//   [
-//    {'Josef',false},
-//    {'Max', false},
-//    {'Elli',true},
-//    {'Robin', false}
-//   ]
-//  }
-// ]
-
 import Posresult from "./PosResult.vue";
 import Negresult from "./NegResult.vue";
 import Timeover from "./TimeOver.vue";

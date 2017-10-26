@@ -126,7 +126,7 @@ export default {
                 : event.target.classList.add("red");
             setTimeout(() => {
                 this.onClick(click);
-            }, 1000);
+            }, 400);
         }
     }
 };
