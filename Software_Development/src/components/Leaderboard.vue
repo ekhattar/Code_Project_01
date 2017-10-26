@@ -4,9 +4,7 @@
 		<ul>
 			<p v-for="leader in leaders"><span>{{ leader.id }}#</span><span>{{ leader.name }}</span><span>Score: {{ leader.points }}</span></p>
 		</ul> 
-    <router-link to="/welcome"> 
-			 Back
-		</router-link>		
+        <router-link to="/welcome">Back</router-link>		
 	</div>
 </template>
 
@@ -30,14 +28,10 @@ export default {
     created() {
         Http.get(`/leaderboard`)
             .then(data => {
-                console.log(data.data);
                 this.leaders = data.data.leaders;
-                console.log(this.leaders);
                 for (var i = 0; i < 10; i++) {
                     this.leaders[i].id = i + 1;
                 }
-                console.log(this.leaders);
-                //this.leaders = response.data.leaders;
             })
             .catch(function(error) {
                 console.log(error);
