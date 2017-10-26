@@ -11,46 +11,39 @@
 </template>
 
 <script>
-	import Http from '../http-rest.js';
-	import {Event} from '../event.js';
-	 export default {
-	 	data() {
-	 		return {
-	 			name: 'Leaderboard',
-	 			leaders : ['Eins','Zwei']
-	 		}
-	 	},
-	 	methods: {
-	 		changeTemp(destTemp) {
-	 			console.log("clicked")
-	 			Event.$emit('change',destTemp);
-	 			console.log(destTemp)
-	 		}
-	 	},
-	 	created () {	
-		 	Http.get(`/leaderboard`)
-				.then((data) => {
-					console.log(data.data);
-					this.leaders = data.data.leaders;
-					console.log(this.leaders)
-					for (var i = 0; i < 10; i++)
-		            {
-//		            	console.log('In')
-//		            	console.log(this.leaders)
-//		            	console.log(this.leaders[i])
-//		            	console.log('Type of leaders: '+typeof(data.leaders))
-		               	this.leaders[i].id = i+1;
-//		               	console.log(this.leaders[i].id)
-//		               	console.log(data.leaders(i))
-					};
-					console.log(this.leaders)
-					//this.leaders = response.data.leaders;
-				})
-				.catch(function (error) {
-			    	console.log(error);
-				});	
-	 	}	 	
-	 }
+import Http from "../http-rest.js";
+import { Event } from "../event.js";
+export default {
+    data() {
+        return {
+            name: "Leaderboard",
+            leaders: ["Eins", "Zwei"]
+        };
+    },
+    methods: {
+        changeTemp(destTemp) {
+            console.log("clicked");
+            Event.$emit("change", destTemp);
+            console.log(destTemp);
+        }
+    },
+    created() {
+        Http.get(`/leaderboard`)
+            .then(data => {
+                console.log(data.data);
+                this.leaders = data.data.leaders;
+                console.log(this.leaders);
+                for (var i = 0; i < 10; i++) {
+                    this.leaders[i].id = i + 1;
+                }
+                console.log(this.leaders);
+                //this.leaders = response.data.leaders;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+};
 </script>
 
 <style>
