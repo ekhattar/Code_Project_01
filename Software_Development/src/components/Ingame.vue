@@ -24,6 +24,7 @@ import Question from './Question.vue';
         name: 'ingame',
         components: {Result,
                     Question},
+        props: ['questions'],
         data() {
             return {
                 name: 'ingame',

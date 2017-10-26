@@ -27,6 +27,7 @@ export default {
       changeTemp: '',
       display: 'Ingame',
       loaded : true,
+      questions:{}
     }
   },
   methods: {
@@ -37,21 +38,28 @@ export default {
       }
     },
   mounted() {
+      Event.$on('change', (changeTemp) => {
+        this.display = changeTemp;
+      });
 
-      console.log("Get Request");
-      HTTP.get(`quiz-question?questionId=3&questionId=4&questionId=5`)
+      let questionsIdGet = '?';
+      for(let i = 0; i < 100;i++) {
+          let number = Math.floor(Math.random() * (460 - 110) + 110);
+          questionsIdGet = questionsIdGet + 'questionId=' + number + "&";
+      }
+
+
+      HTTP.get(`quiz-question`+questionsIdGet)
           .then(response => {
               // JSON responses are automatically parsed.
-              console.log(response.data);
+              //console.log(response.data);
+              this.questions = response.data.questions;
               this.loaded = false;
+              console.log(this.questions);
           })
           .catch(e => {
               this.errors.push(e)
           });
-
-      Event.$on('change', (changeTemp) => {
-        this.display = changeTemp;
-      })
   },
   create: function() {
   }
