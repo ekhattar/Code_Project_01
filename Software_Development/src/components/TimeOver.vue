@@ -1,14 +1,45 @@
 <template>
 	<div>
-        <p style="text-align: center">Time ran out</p>
+        <p style="text-align: center" class="timeout"><span class="white">Time</br></span> RAN OUT!
         <p style="text-align: center">You lost 1 Life</p>
-        <uiButton v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>  
+        <uiButton class="btn4" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>  
     </div>
 </template>
 
 <style scoped lang="sass">
 
+    .btn4
+        position: absolute
+        bottom: 24px
+        left: 50%
+        transform: translateX(-50%)
+        display: block
+    .timeout
+        /* Sorry, WRONG! */
+
+        position: absolute;
+        width: 237px;
+        height: 98px;
+        left: 69px;
+        top: 164px;
+
+        font-family: Roboto Slab;
+        font-style: normal;
+        font-weight: bold;
+        line-height: normal;
+        font-size: 48px;
+        text-align: center;
+        color: #ED3964
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+
+    .white
+        color: #FFFFFF;
+        font-size: 32px
+        font-weight: normal;
+
+
 </style>
+
 
 <script>
 import { Event } from "../event.js";
