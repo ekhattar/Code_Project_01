@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<h1>Leaderboard</h1>
+		<h1>Leaderboard</h1>		
 		<ul>
 			<p v-for="leader in leaders"><span>{{ leader.id }}#</span><span>{{ leader.name }}</span><span>Score: {{ leader.points }}</span></p>
 		</ul> 
-		<a href="/welcome" class="buttonlink"> 
+    <router-link to="/welcome"> 
 			 Back
-		</a>		
+		</router-link>		
 	</div>
 </template>
 
@@ -54,39 +54,5 @@
 </script>
 
 <style>
-span {
-	margin-right: 20px;
-	box-sizing:  100px; 
-}
-a.buttonlink:link, a.buttonlink:visited, a.buttonlink:hover, a.buttonlink:active
-{
- font-family:Arial;
- font-size:14px;
- text-align:center;
- text-Decoration: none;
- width:100px;
- height:20px;
- padding:3px;
-}
-a.buttonlink:link, a.buttonlink:visited
-{
- color:#000000;
- background-color:#bcbcbc;
- border-left:2px solid #efefef;
- border-top:2px solid #efefef;
- border-right:2px solid #000000;
- border-bottom:2px solid #000000;
-}
-a.buttonlink:hover, a.buttonlink:active
-{
- color:#ffffff;
- background-color:#5555aa;
- border-left:2px solid #efefff;
- border-top:2px solid #efefff;
- border-right:2px solid #000055;
- border-bottom:2px solid #000055;
-}
-a.buttonlink {
-	display: block;margin-top: 20px;
-}
+
 </style>

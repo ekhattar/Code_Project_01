@@ -7,7 +7,7 @@
                 <button class="normal" @click="submitScore">Submit Score</button>
             </li>
             <li>
-                <a href="/welcome"><button type="button" class="normal">Main Menu</button></a>
+                <router-link to="/welcome">Main Menu</router-link>
             </li>
         </ul>
     </div>
@@ -46,8 +46,8 @@
 </script>
 
 <style>
-	.normal {
-        width: 300px;
-        height: 20px;
-    }
+.normal {
+    width: 300px;
+    height: 20px;
+}
 </style>
