@@ -4,13 +4,17 @@
 		<ul>
 			<p v-for="leader in leaders"><span>{{ leader.id }}#</span><span>{{ leader.name }}</span><span>Score: {{ leader.points }}</span></p>
 		</ul> 
-        <router-link to="/welcome">Back</router-link>		
+        <router-link to="/welcome">
+            <uiButton v-bind:onClick="onNextQuestion" title="Back"></uiButton>  
+        </router-link>		
 	</div>
 </template>
 
 <script>
 import Http from "../http-rest.js";
 import { Event } from "../event.js";
+import uiButton from "./ui_elements/Button.vue";
+
 export default {
     data() {
         return {
@@ -18,6 +22,7 @@ export default {
             leaders: ["Eins", "Zwei"]
         };
     },
+    components: { uiButton },
     methods: {
         changeTemp(destTemp) {
             console.log("clicked");

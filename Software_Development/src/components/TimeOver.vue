@@ -2,21 +2,20 @@
 	<div>
         <p style="text-align: center">Time ran out</p>
         <p style="text-align: center">You lost 1 Life</p>
-        <ul>
-            <li>
-                <button class="normal" @click="onNextQuestion()">Next Question</button>
-            </li>
-            <li>
-                <button type="button" class="normal" @click="onEndGame()">End Game</button>
-            </li>
-        </ul>
+        <uiButton v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>  
     </div>
 </template>
 
+<style scoped lang="sass">
+
+</style>
+
 <script>
 import { Event } from "../event.js";
+import uiButton from "./ui_elements/Button.vue";
 export default {
     name: "timeover",
+    components: { uiButton },
     data() {
         return {
             name: "timeover"
@@ -26,10 +25,3 @@ export default {
 };
 </script>
 
-<style>
-.normal {
-    -webkit-appearance: button;
-    width: 300px;
-    height: 20px;
-}
-</style>

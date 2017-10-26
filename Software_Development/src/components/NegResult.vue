@@ -2,34 +2,27 @@
 	<div>
         <p style="text-align: center">Incorrect Answer</p>
         <p style="text-align: center">You lost 1 Life</p>
-        <ul>
-            <li>
-                <button class="normal" @click="onNextQuestion()">Next Question</button>
-            </li>
-            <li>
-                <button type="button" class="normal" @click="onEndGame()">End Game</button>
-            </li>
-        </ul>
+        <uiButton v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>
     </div>
 </template>
 
+<style>
+
+</style>
+
 <script>
-	import {Event} from '../event.js'
-	 export default {
-	 	name: 'negresult',
-	 	data() {
-	 		return {
-	 			name: 'negresult',
-	 		}
-	 	},
-		props: ['onNextQuestion',
-				'onEndGame']
-	}	
+import { Event } from "../event.js";
+import uiButton from "./ui_elements/Button.vue";
+
+export default {
+    name: "negresult",
+    components: { uiButton },
+    data() {
+        return {
+            name: "negresult"
+        };
+    },
+    props: ["onNextQuestion", "onEndGame"]
+};
 </script>
 
-<style>
-	.normal {
-        width: 300px;
-        height: 20px;
-    }
-</style>

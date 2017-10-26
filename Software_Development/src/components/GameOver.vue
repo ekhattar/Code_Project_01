@@ -2,22 +2,22 @@
 	<div>
         <p style="text-align: center">Game Over</p><br>
         <p style="text-align: center">Your Score is: {{ score }}</p>
-        <ul>
-            <li>
-                <button class="normal" @click="submitScore">Submit Score</button>
-            </li>
-            <li>
-                <router-link to="/welcome">Main Menu</router-link>
-            </li>
-        </ul>
+        <uiButton onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+        <router-link to="/welcome"><uiButton title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
+
+<style scoped lang="sass">
+
+</style>
 
 <script>
 import Http from "../http-rest.js";
 import { Event } from "../event.js";
+import uiButton from "./ui_elements/Button.vue";
 export default {
     name: "gameover",
+    components: { uiButton },
     data() {
         return {
             name: "gameover",
@@ -42,10 +42,3 @@ export default {
     }
 };
 </script>
-
-<style>
-.normal {
-    width: 300px;
-    height: 20px;
-}
-</style>
