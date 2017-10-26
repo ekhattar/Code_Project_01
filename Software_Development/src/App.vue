@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-app">
     <router-view></router-view>
   </div>
 </template>
@@ -18,6 +18,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="sass">
+    .container-app
+        background: #323035
+        width: 100vw
+        height: 100vh
 
 </style>

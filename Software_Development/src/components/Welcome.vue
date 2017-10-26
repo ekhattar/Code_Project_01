@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<h1>Welcome</h1>
-		<a href="/quiz" class="buttonlink"> 
+		<router-link to="/quiz" class="buttonlink"> 
 			 Play
-		</a>
-		<a href="/leaderboard" class="buttonlink"> 
+		</router-link>
+		<router-link to="/leaderboard" class="buttonlink"> 
 			 Leaderboard
-		</a>
+		</router-link>
 	</div>
 </template>
 
@@ -29,5 +29,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
+    .buttonlink
+        font-size: 40px
 
 </style>

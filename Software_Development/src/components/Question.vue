@@ -13,21 +13,21 @@
 </template>
 
 <script>
-	import {Event} from '../event.js'
-	 export default {
-	 	name: 'question',
-	 	data() {
-	 		return {
-	 			name: 'question',
-	 		}
-	 	},
-		props: ['onClick']
-	}	
+import { Event } from "../event.js";
+export default {
+    name: "question",
+    data() {
+        return {
+            name: "question"
+        };
+    },
+    props: ["onClick"]
+};
 </script>
 
 <style>
-	.normal {
-        width: 300px;
-        height: 20px;
-    }
+.normal {
+    width: 300px;
+    height: 20px;
+}
 </style>
