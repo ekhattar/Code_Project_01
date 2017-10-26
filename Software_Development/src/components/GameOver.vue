@@ -4,10 +4,13 @@
         <p style="text-align: center">Your Score is: {{ score }}</p>
         <ul>
             <li>
-                <button class="normal" @click="submitScore">Submit Score</button>
+				<input type="text" v-model="username" placeholder="Username" required>
+			</li>
+			<li>
+				<input type="submit" value="SubmitScore" class="normal" @click="submitScore">
             </li>
             <li>
-                <router-link to="/welcome">Main Menu</router-link>
+                <a href="/welcome"><button type="button" class="normal">Main Menu</button></a>
             </li>
         </ul>
     </div>
@@ -23,6 +26,7 @@
 	 			name: 'gameover',
 	 			email: 'timon@test',
 	 			url: '/quiz-result?',
+	 			username: '',
 	 		}
 	 	},
 		props: ['onNextQuestion',
@@ -30,11 +34,11 @@
 		methods: {
 			submitScore () {
 				console.log('Post')
-				this.url = this.url + 'points='+this.score+'&email='+this.email;
+				this.url = this.url + 'points='+this.score+'&name='+this.username;
 				Http.post(this.url)
 				.then(function (response) {
 				    console.log(response);
-				    path = '/leaderboard';
+				    alert('Success');
 				})
 				.catch(function (error) {
 				    console.log(error);
@@ -46,8 +50,8 @@
 </script>
 
 <style>
-.normal {
-    width: 300px;
-    height: 20px;
-}
+	.normal {
+        width: 300px;
+        height: 20px;
+    }
 </style>
