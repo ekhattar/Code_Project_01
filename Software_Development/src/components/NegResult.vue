@@ -1,6 +1,6 @@
 <template>
 	<div class="container-result">
-        <p style="text-align: center" class="incorrect"><span class="white">Sorry,</br></span> WRONG!</p>
+        <p style="text-align: center" class="incorrect"><span class="white">{{currentText}}</br></span> WRONG!</p>
         <div class="container-hearts">
             <i v-for="n in lifes" ref="heart" class="fa fa-heart heart"></i>
             <i v-for="n in (3 - lifes)" ref="heart" class="fa fa-heart heart disabled"></i>
@@ -21,7 +21,18 @@ export default {
     components: { uiButton },
     data() {
         return {
-            name: "negresult"
+            name: "negresult",
+            texts: [
+                "Sorry,",
+                "Nope, nope, nope",
+                "Try again",
+                "You fool",
+                "Really?",
+                "Try harder!",
+                "So close!",
+                "Dude, come on ..."
+            ],
+            currentText: ""
         };
     },
     mounted: function() {
@@ -29,6 +40,10 @@ export default {
         console.log(toAnimate);
         console.log(this.$refs.heart);
         this.$refs.heart[toAnimate].classList.add("animate");
+
+        const rand = Math.floor(Math.random() * this.texts.length);
+        console.log(rand);
+        this.currentText = this.texts[rand];
     }
 };
 </script>
@@ -91,7 +106,7 @@ export default {
 
     .white
         color: #FFFFFF;
-        font-size: 32px
+        font-size: 28px
         font-weight: normal;
     
     .incorrect
@@ -105,7 +120,7 @@ export default {
         font-style: normal;
         font-weight: bold;
         line-height: normal;
-        font-size: 42px;
+        font-size: 48px;
         text-align: center;
 
         color: #ED3964

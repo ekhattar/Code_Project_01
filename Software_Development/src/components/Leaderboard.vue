@@ -93,7 +93,7 @@ export default {
     data() {
         return {
             name: "Leaderboard",
-            leaders: [],
+            leaders: []
         };
     },
     components: { uiButton },
@@ -105,7 +105,7 @@ export default {
         }
     },
     created() {
-        Http.get(`/leaderboard?name=TimonTest`)
+        Http.get(`/leaderboard`)
             .then(data => {
                 this.leaders = data.data.leaders;
             })
