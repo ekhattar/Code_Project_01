@@ -13,8 +13,10 @@
             <p class="score-text">Final Score</p>
         </div>
         <input type="text" class="input" required v-model="username" placeholder="Type a Nickname">
-        <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
-        <div v-if="inputError"> {{ inputErrorMsg }}</div>
+        <div>
+            <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+            <div v-if="inputError" class="input-error"> {{ inputErrorMsg }}</div>
+        </div>
         <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
@@ -48,7 +50,6 @@
         p
             margin-bottom: 6px
 
-
     .btn-small
         padding: 16px
         background: #323035
@@ -76,6 +77,16 @@
         text-align: center
         color: #E1E1E1
         margin-bottom: 12px
+
+    .input-error
+        color: #ED3964
+        position: absolute
+        margin-top: 12px
+        line-height: 1.3
+        font:
+            family: "Source Sans Pro"
+            weight: 400
+
 
     .container-gameover
         height: calc(100vh - 58px - 24px)
@@ -149,30 +160,38 @@ export default {
             username: "",
             submitted: false,
             inputError: false,
-            submitmsg: '',
-            inputErrorMsg: '',
+            submitmsg: "",
+            inputErrorMsg: ""
         };
     },
     props: ["onNextQuestion", "score"],
     methods: {
         submitScore() {
-            if (this.username != '') {
-                this.url = this.url + "points=" + this.score + "&name=" + this.username;
+            if (this.username != "") {
+                this.url =
+                    this.url +
+                    "points=" +
+                    this.score +
+                    "&name=" +
+                    this.username;
                 Http.post(this.url)
-                    .then( (response) => {
-                        this.submitmsg = "You submitted your score sucessful to the Leaderboard";
+                    .then(response => {
+                        this.submitmsg =
+                            "You submitted your score sucessful to the Leaderboard";
                         this.submitted = true;
                     })
-                    .catch( (error) => {
-                        this.submitmsg = "Error! Please try again or contact the administrator";
+                    .catch(error => {
+                        this.submitmsg =
+                            "Error! Please try again or contact the administrator";
                         this.submitted = true;
                     });
             } else {
                 this.inputError = true;
-                this.inputErrorMsg = 'You need to enter a Username to submit to the Leaderboard!'
-            }        
+                this.inputErrorMsg =
+                    "You need to enter a Username to submit to the Leaderboard!";
+            }
         }
-    },
+    }
 };
 </script>
 

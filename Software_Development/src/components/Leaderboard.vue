@@ -13,7 +13,7 @@
 	</div>
 </template>
 
-<style lang="sass">
+<style scoped lang="sass">
 
     .position
         height: 40px
