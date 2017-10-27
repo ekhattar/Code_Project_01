@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import App from './App.vue';
-import Router from 'vue-router';
-import Login from './Login.vue';
-import Quiz from './Quiz.vue';
-import Welcome from './components/Welcome.vue';
-import Leaderboard from './components/Leaderboard.vue';
-import Http from './http-rest.js';
+import Vue from "vue";
+import App from "./App.vue";
+import Router from "vue-router";
+import Login from "./Login.vue";
+import Quiz from "./Quiz.vue";
+import Welcome from "./components/Welcome.vue";
+import Leaderboard from "./components/Leaderboard.vue";
+import Http from "./http-rest.js";
 
 Window.Event = new Vue();
 Vue.use(Router);

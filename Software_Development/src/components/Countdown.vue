@@ -1,8 +1,30 @@
 <template>
-	<div>
-		<p>{{counter}}</p>
-	</div>
+	<div class="container-timer">
+        <span class="timer">{{counter}}</span>
+    </div>
 </template>
+
+<style scoped lang="sass">
+    .container-timer
+        border-radius: 50px
+        background: #323035
+        width: 96px
+        height: 96px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        display: flex
+        justify-content: center
+        align-items: center
+    .timer
+        font:
+            size: 42px
+            family: "Roboto Slab"
+        background: -webkit-linear-gradient(#FDD07C, #DE9B32)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+</style>
 
 <script>
 import { Event } from "../event.js";
@@ -33,8 +55,3 @@ export default {
 };
 </script>
 
-<style scoped lang="sass">
-	.button
-		background: pink
-		margin: 32px
-</style>

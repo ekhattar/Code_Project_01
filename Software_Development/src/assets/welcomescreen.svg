@@ -1,7 +1,4 @@
-<template>
-	<div class="container-welcome">
-		
-        <svg width="289" height="109" viewBox="0 0 289 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="289" height="109" viewBox="0 0 289 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Page 1</title>
 <desc>Created using Figma</desc>
 <g id="Canvas" transform="translate(-7884 -9802)">
@@ -43,49 +40,3 @@
 <path id="path2_fill" d="M 18.7963 29.6111C 13.7086 29.6111 9.61014 24.9889 9.61014 19.3556C 9.61014 13.7222 13.7086 9.1 18.7963 9.1C 21.1988 9.1 23.46 10.2556 25.1559 11.9889L 31.6569 5.48889C 28.1238 2.16667 23.6014 0 18.5136 0C 8.33821 0 0 8.66667 0 19.5C 0 30.1889 8.33821 39 18.5136 39C 23.6014 39 28.2651 36.8333 31.5156 33.3667L 25.0146 26.8667C 23.46 28.6 21.1988 29.6111 18.7963 29.6111ZM 45.5068 0.866667L 27.5585 18.7778L 26.9932 19.3556L 45.5068 37.9889L 51.8665 31.6333L 39.2885 19.5L 51.8665 7.22222L 45.5068 0.866667ZM 95.1121 1.3L 82.9581 1.3L 82.9581 37.5556L 95.2534 37.5556C 106.418 37.5556 114.474 30.6222 114.474 19.5C 114.474 8.23333 106.418 1.3 95.1121 1.3ZM 95.1121 29.4667L 92.1442 29.4667L 92.1442 9.53333L 95.1121 9.53333C 101.613 9.53333 105.005 13.8667 105.005 19.5C 105.005 24.8444 101.33 29.4667 95.1121 29.4667ZM 145 9.53333L 145 1.3L 118.713 1.3L 118.713 37.5556L 145 37.5556L 145 29.4667L 127.9 29.4667L 127.9 23.2556L 144.576 23.2556L 144.576 15.1667L 127.9 15.1667L 127.9 9.53333L 145 9.53333ZM 60.4873 0.866667L 54.1277 7.22222L 66.7057 19.5L 54.1277 31.6333L 60.4873 37.9889L 79.001 19.3556L 78.4357 18.7778L 60.4873 0.866667Z"/>
 </defs>
 </svg>
-
-
-		<router-link to="/quiz" class="buttonlink"> 
-			<uiButton class="btn1" title="Play"></uiButton> 
-		</router-link>
-		<router-link to="/leaderboard" class="buttonlink">
-            <uiButton title="Leaderboard"></uiButton> 
-		</router-link>
-	</div>
-</template>
-
-<style scoped lang="sass">
-    .btn1
-       margin: 12px
-
-    .container-welcome
-        text-align: center
-        top: 50%
-        position: absolute
-        transform: translateY(-50%)
-
-</style>
-
-<script>
-import Http from "../http-rest.js";
-import { Event } from "../event.js";
-import uiButton from "./ui_elements/Button.vue";
-export default {
-    components: {
-        uiButton
-    },
-    data() {
-        return {
-            name: "welcome"
-        };
-    },
-    methods: {
-        changeTemp(destTemp) {
-            console.log("clicked");
-            Event.$emit("change", destTemp);
-            console.log(destTemp);
-        }
-    }
-};
-
-</script>

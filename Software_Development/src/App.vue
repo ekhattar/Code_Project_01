@@ -25,3 +25,17 @@ export default {
         height: 100vh
 
 </style>
+
+<style>
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+}
+</style>

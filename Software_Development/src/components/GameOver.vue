@@ -1,53 +1,124 @@
 <template>
-	<div>
-        <p style="text-align: center">Game Over</p><br>
-        <p style="text-align: center">Your Score is: {{ score }}</p>
-        <ul>
-            <li>
-                <button class="normal" @click="submitScore">Submit Score</button>
-            </li>
-            <li>
-                <router-link to="/welcome">Main Menu</router-link>
-            </li>
-        </ul>
+	<div class="container-gameover">
+        <p class="text">Game Over!</p><br>
+        <div class="score">
+            <p>{{ score }}</p> 
+            <p class="score-text">Final Score</p>
+        </div>
+        <input type="text" class="input" placeholder="Type a Nickname">
+        <uiButton onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+        <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
 
-<script>
-	import Http from '../http-rest.js';
-	import {Event} from '../event.js';
-	export default {
-	 	name: 'gameover',
-	 	data() {
-	 		return {
-	 			name: 'gameover',
-	 			email: 'timon@test',
-	 			url: '/quiz-result?',
-	 		}
-	 	},
-		props: ['onNextQuestion',
-				'score'],
-		methods: {
-			submitScore () {
-				console.log('Post')
-				this.url = this.url + 'points='+this.score+'&email='+this.email;
-				Http.post(this.url)
-				.then(function (response) {
-				    console.log(response);
-				    path = '/leaderboard';
-				})
-				.catch(function (error) {
-				    console.log(error);
-				});
-			},
+<style scoped lang="sass">
 
-		}
-	}	
+    .input
+        background: none
+        width: 327px
+        height: 58px
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1)
+        border-radius: 8px
+        border: 4px solid #EDEDEE
+
+        font-family: Source Sans Pro
+        font-style: normal
+        font-weight: bold
+        line-height: normal
+        font-size: 20px
+        text-align: center
+        color: #E1E1E1
+        margin-bottom: 12px
+
+    .container-gameover
+        height: calc(100vh - 58px - 24px)
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+
+    .score
+        width: calc(100% - 48px - 48px)
+        background: linear-gradient(#E5AA47, #D4962E)
+        border: 1px solid #F1BF69
+        padding:
+            top: 24px
+            bottom: 24px
+            left: 16px
+            right: 16px
+        text-align: center
+        color: white
+        font:   
+            family: "Roboto Slab"
+            size: 56px
+            weight: bold
+        letter-spacing: 1.2px
+        border-radius: 6px
+        margin-bottom: 48px
+        p
+            text-shadow: 0 2px 12px rgba(black, 0.25)
+
+    .score-text
+        text-shadow: none!important
+        color: #9C6912
+        margin-top: 16px
+        font:
+            size: 24px
+            weight: normal
+
+    .btn-bottom
+        position: absolute
+        bottom: 24px
+        left: 50%
+        transform: translateX(-50%)
+        display: block
+        
+    .text
+        font-family: Roboto Slab;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 44px;
+        color: #EDB453
+        text-align: center;
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        text-transform: uppercase
+        letter-spacing: 1.2px
+        margin-bottom: 16px
+
+</style>
+
+<script>
+import Http from "../http-rest.js";
+import { Event } from "../event.js";
+import uiButton from "./ui_elements/Button.vue";
+export default {
+    name: "gameover",
+    components: { uiButton },
+    data() {
+        return {
+            name: "gameover",
+            email: "timon@test",
+            url: "/quiz-result?"
+        };
+    },
+    props: ["onNextQuestion", "score"],
+    methods: {
+        submitScore() {
+            console.log("Post");
+            this.url =
+                this.url + "points=" + this.score + "&email=" + this.email;
+            Http.post(this.url)
+                .then(function(response) {
+                    path = "/leaderboard";
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+    }
+};
 </script>
 
-<style>
-.normal {
-    width: 300px;
-    height: 20px;
-}
-</style>
+
+
+
