@@ -89,54 +89,11 @@ import Http from "../http-rest.js";
 import { Event } from "../event.js";
 import uiButton from "./ui_elements/Button.vue";
 
-const mockData = [
-    {
-        name: "Max",
-        points: 3325
-    },
-    {
-        name: "Elias",
-        points: 3325
-    },
-    {
-        name: "Timon",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    },
-    {
-        name: "Josef",
-        points: 3325
-    }
-];
-
 export default {
     data() {
         return {
             name: "Leaderboard",
-            leaders: mockData
+            leaders: []
         };
     },
     components: { uiButton },
@@ -148,7 +105,7 @@ export default {
         }
     },
     created() {
-        Http.get(`/leaderboard?name=TimonTest`)
+        Http.get(`/leaderboard`)
             .then(data => {
                 this.leaders = data.data.leaders;
             })
