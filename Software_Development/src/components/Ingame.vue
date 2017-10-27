@@ -7,15 +7,15 @@
             <li v-if="!isQuestionDone">Score to get {{ 100 + (Math.floor(this.timer/15*30)) }}</li> 
         </ul>
         <gameover v-if="gameOver" v-bind:score="score"></gameover>
-        <timeover v-else-if="isOver" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></timeover>
+        <timeover v-bind:score="score" v-else-if="isOver" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></timeover>
         <transition v-else-if="!isQuestionDone" name="slideInLeft">
             <question v-bind:timer="timer" v-bind:updateScore="(arg) => {updateScore(arg)}" v-bind:firstQuestionList="allQuestionsList" v-bind:updateQuestionList="(arg) => {updateQuestionList(arg)}"  v-bind:questionCounter="questionCounter" ></question>
         </transition>
         <transition v-else-if="isRight" name="fade">
-            <posresult v-bind:gain="gain" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
+            <posresult v-bind:score="score" v-bind:gain="gain" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
         </transition>
         <transition v-else-if="!isRight" name="fade">
-            <negresult v-bind:lifes="lifes" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
+            <negresult v-bind:score="score" v-bind:lifes="lifes" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
         </transition>
     </div>
     <div v-else class="container-timer">
@@ -81,7 +81,7 @@ export default {
         Question,
         Gameover
     },
-    props: ['questions'],
+    props: ["questions"],
     data() {
         return {
             name: "ingame",
@@ -124,7 +124,9 @@ export default {
         updateQuestionList(newQuestions) {
             console.log("UpdateQuestionList");
             console.log(newQuestions.length);
-            this.mutableQuestionList = this.mutableQuestionList.concat(newQuestions);
+            this.mutableQuestionList = this.mutableQuestionList.concat(
+                newQuestions
+            );
         },
         nextQuestion() {
             this.isQuestionDone = false;
@@ -146,13 +148,12 @@ export default {
                 this.questionCounter++;
                 this.isQuestionDone = true;
                 this.isOver = true;
-                this.lifes -=1 ;
+                this.lifes -= 1;
                 if (this.lifes === 0) {
                     this.gameOver = true;
                 }
             } else {
                 this.timer = 0;
-
             }
         }
     },

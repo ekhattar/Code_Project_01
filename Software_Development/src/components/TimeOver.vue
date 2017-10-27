@@ -1,5 +1,9 @@
 <template>
 	<div>
+        <div class="currentscore-container">
+            <p>{{score}}</p>
+            <p>Current Score</p>
+        </div>
         <p style="text-align: center" class="timeout"><span class="white">Time</br></span> RAN OUT!
         <p style="text-align: center">You lost 1 Life</p>
         <uiButton class="btn4" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>  
@@ -8,12 +12,29 @@
 
 <style scoped lang="sass">
 
+    .currentscore-container
+        position: absolute
+        top: 48px
+        width: 100%
+        color: #EDEDEE
+        text-align: center
+        font: 
+            size: 16px
+            family: "Source Sans Pro"
+        p
+            margin-bottom: 8px
+            &:first-child
+                font: 
+                    size: 32px
+                    family: "Roboto Slab"
+
     .btn4
         position: absolute
         bottom: 24px
         left: 50%
         transform: translateX(-50%)
         display: block
+
     .timeout
         /* Sorry, WRONG! */
 
@@ -52,7 +73,7 @@ export default {
             name: "timeover"
         };
     },
-    props: ["onNextQuestion", "onEndGame"]
+    props: ["onNextQuestion", "onEndGame", "score"]
 };
 </script>
 
