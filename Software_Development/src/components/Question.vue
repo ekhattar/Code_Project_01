@@ -156,7 +156,7 @@ export default {
                 isSuccess = false;
             }
             console.log(isSuccess);
-            this.animateBackground(event, answer);
+            this.animateBackground(event, isSuccess);
         },
         getNextQuestions() {
             let questionsIdGet = '?';
