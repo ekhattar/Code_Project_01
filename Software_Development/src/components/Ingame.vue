@@ -143,10 +143,16 @@ export default {
                 setTimeout(this.ingameTimer, 1000);
             } else if (this.isQuestionDone === false) {
                 //                    console.log("HAPPY NEW YEAR");
+                this.questionCounter++;
                 this.isQuestionDone = true;
                 this.isOver = true;
+                this.lifes -=1 ;
+                if (this.lifes === 0) {
+                    this.gameOver = true;
+                }
             } else {
                 this.timer = 0;
+
             }
         }
     },
