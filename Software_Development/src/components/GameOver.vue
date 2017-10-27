@@ -5,8 +5,8 @@
             <p>{{ score }}</p> 
             <p class="score-text">Final Score</p>
         </div>
-        <input type="text" class="input" placeholder="Type a Nickname">
-        <uiButton onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+        <input type="text" class="input" v-model="username" placeholder="Type a Nickname">
+        <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
         <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
@@ -98,18 +98,17 @@ export default {
         return {
             name: "gameover",
             email: "timon@test",
-            url: "/quiz-result?"
+            url: "/quiz-result?",
+            username: '',
         };
     },
     props: ["onNextQuestion", "score"],
     methods: {
         submitScore() {
-            console.log("Post");
-            this.url =
-                this.url + "points=" + this.score + "&email=" + this.email;
+            this.url = this.url + "points=" + this.score + "&name=" + this.username;
             Http.post(this.url)
                 .then(function(response) {
-                    path = "/leaderboard";
+                    console.log(response)
                 })
                 .catch(function(error) {
                     console.log(error);
