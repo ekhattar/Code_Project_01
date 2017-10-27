@@ -15,7 +15,7 @@
             <posresult v-bind:gain="gain" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
         </transition>
         <transition v-else-if="!isRight" name="fade">
-            <negresult v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
+            <negresult v-bind:lifes="lifes" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
         </transition>
     </div>
     <div v-else class="container-timer">
@@ -48,7 +48,7 @@
         -webkit-text-fill-color: transparent
 
     .slideInLeft-enter, .slideInLeft-enter-active
-        transition: all 0.3s ease-out
+        transition: all 0.5s ease-in-out
         transform: translateX(100%)
         opacity: 0
 

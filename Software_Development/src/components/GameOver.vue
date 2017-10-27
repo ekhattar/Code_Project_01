@@ -1,56 +1,89 @@
 <template>
 	<div class="container-gameover">
-        <p style="text-align: center" class="GO">Game Over!</p><br>
-        <p style="text-align: center" class="score">Your Score is: {{ score }}</p>
-        <uiButton class="btn5" onClick="() => {submitScore()}" title="Submit Score"></uiButton>
-        <router-link to="/welcome"><uiButton title="Main Menu"></uiButton></router-link>    
+        <p class="text">Game Over!</p><br>
+        <div class="score">
+            <p>{{ score }}</p> 
+            <p class="score-text">Final Score</p>
+        </div>
+        <input type="text" class="input" placeholder="Type a Nickname">
+        <uiButton onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+        <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
 
 <style scoped lang="sass">
-    .btn5
-       margin: 12px
+
+    .input
+        background: none
+        width: 327px
+        height: 58px
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1)
+        border-radius: 8px
+        border: 4px solid #EDEDEE
+
+        font-family: Source Sans Pro
+        font-style: normal
+        font-weight: bold
+        line-height: normal
+        font-size: 20px
+        text-align: center
+        color: #E1E1E1
+        margin-bottom: 12px
 
     .container-gameover
-        text-align: center
-        top: 50%
-        position: absolute
-        transform: translateY(-50%)
-    .GO
-        /* GAME OVER */
-        width: 274px;
-        height: 67px;
-        display: block
-        margin-left: auto
-        margin-right: auto
-        top: 120px;
+        height: calc(100vh - 58px - 24px)
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
 
+    .score
+        width: calc(100% - 48px - 48px)
+        background: linear-gradient(#E5AA47, #D4962E)
+        border: 1px solid #F1BF69
+        padding:
+            top: 24px
+            bottom: 24px
+            left: 16px
+            right: 16px
+        text-align: center
+        color: white
+        font:   
+            family: "Roboto Slab"
+            size: 56px
+            weight: bold
+        letter-spacing: 1.2px
+        border-radius: 6px
+        margin-bottom: 48px
+        p
+            text-shadow: 0 2px 12px rgba(black, 0.25)
+
+    .score-text
+        text-shadow: none!important
+        color: #9C6912
+        margin-top: 16px
+        font:
+            size: 24px
+            weight: normal
+
+    .btn-bottom
+        position: absolute
+        bottom: 24px
+        left: 50%
+        transform: translateX(-50%)
+        display: block
+        
+    .text
         font-family: Roboto Slab;
         font-style: normal;
         font-weight: bold;
-        line-height: 67px;
-        font-size: 46px;
+        font-size: 44px;
         color: #EDB453
         text-align: center;
         text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    
-    .score
-        /* Final Score */
-
-        position: absolute;
-        width: 129px;
-        height: 35px;
-        left: 123px;
-        top: 272px;
-
-        font-family: Roboto Slab;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 35px;
-        font-size: 24px;
-        text-align: center;
-        color: #9C6912;
-
+        text-transform: uppercase
+        letter-spacing: 1.2px
+        margin-bottom: 16px
 
 </style>
 
