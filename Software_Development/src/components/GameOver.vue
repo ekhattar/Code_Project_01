@@ -14,6 +14,7 @@
         </div>
         <input type="text" class="input" required v-model="username" placeholder="Type a Nickname">
         <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
+        <div v-if="inputError"> {{ inputErrorMsg }}</div>
         <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
     </div>
 </template>
@@ -147,27 +148,31 @@ export default {
             url: "/quiz-result?",
             username: "",
             submitted: false,
-            submitmsg: ""
+            inputError: false,
+            submitmsg: '',
+            inputErrorMsg: '',
         };
     },
     props: ["onNextQuestion", "score"],
     methods: {
         submitScore() {
-            this.url =
-                this.url + "points=" + this.score + "&name=" + this.username;
-            Http.post(this.url)
-                .then(response => {
-                    this.submitmsg =
-                        "You submitted your score sucessfully to the Leaderboard!";
-                    this.submitted = true;
-                })
-                .catch(error => {
-                    this.submitmsg =
-                        "Error! Please try again or contact the administrator.";
-                    this.submitted = true;
-                });
+            if (this.username != '') {
+                this.url = this.url + "points=" + this.score + "&name=" + this.username;
+                Http.post(this.url)
+                    .then( (response) => {
+                        this.submitmsg = "You submitted your score sucessful to the Leaderboard";
+                        this.submitted = true;
+                    })
+                    .catch( (error) => {
+                        this.submitmsg = "Error! Please try again or contact the administrator";
+                        this.submitted = true;
+                    });
+            } else {
+                this.inputError = true;
+                this.inputErrorMsg = 'You need to enter a Username to submit to the Leaderboard!'
+            }        
         }
-    }
+    },
 };
 </script>
 
