@@ -1,7 +1,7 @@
 <template>
   <div v-if="!loaded">
     <countdown v-if="display==='Countdown'"></countdown>
-    <ingame v-if="display==='Ingame'"></ingame>
+    <ingame v-if="display==='Ingame'" :questions="questions"></ingame>
     <result v-if="display==='Result'"></result>
   </div>
   <div v-else>
@@ -43,7 +43,7 @@ export default {
       });
 
       let questionsIdGet = '?';
-      for(let i = 0; i < 100;i++) {
+      for(let i = 0; i < 10;i++) {
           let number = Math.floor(Math.random() * (460 - 110) + 110);
           questionsIdGet = questionsIdGet + 'questionId=' + number + "&";
       }

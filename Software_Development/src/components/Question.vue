@@ -1,5 +1,5 @@
 <template>
-	<div>	
+	<div v-if="loadingMessage">
 		<p style="text-align: center;">Wie ist die Hauptstadt?</p>
 	    <br>
 	    <br>
@@ -19,9 +19,28 @@
 	 	data() {
 	 		return {
 	 			name: 'question',
+				question: {},
+                loadingMessage: false,
+				counter: 0
 	 		}
 	 	},
-		props: ['onClick']
+		props: ['onClick','questionsList'],
+		 methods: {
+			 check(answer) {
+			     if(answer === this.question.rightAnswers) {
+			         //Event
+				 }
+			 }
+		 },
+
+		 mounted() {
+
+		 },
+
+		 created() {
+	 	    this.question = questionsList[0];
+	 	    this.loadingMessage = true;
+		 }
 	}	
 </script>
 

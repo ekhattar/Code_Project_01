@@ -48,7 +48,11 @@ import Question from './Question.vue';
             }
         },
 
+        mounted() {
+        },
+
         created() {
+            console.log(this.questions);
             setInterval(() => {
                // console.log(this.counter);
 //                console.log('seconds');
