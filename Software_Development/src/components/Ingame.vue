@@ -9,7 +9,7 @@
         <gameover v-if="gameOver" v-bind:score="score"></gameover>
         <timeover v-else-if="isOver" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></timeover>
         <transition v-else-if="!isQuestionDone" name="slideInLeft">
-            <question v-bind:timer="timer" v-bind:onClick="(arg) => {click(arg)}"></question>
+            <question v-bind:timer="timer" v-bind:updateScore="(arg) => {updateScore(arg)}" v-bind:firstQuestionList="allQuestionsList" v-bind:updateQuestionList="(arg) => {updateQuestionList(arg)}"  v-bind:questionCounter="questionCounter" ></question>
         </transition>
         <transition v-else-if="isRight" name="fade">
             <posresult v-bind:gain="gain" v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></posresult>
@@ -81,6 +81,7 @@ export default {
         Question,
         Gameover
     },
+    props: ['questions'],
     data() {
         return {
             name: "ingame",
@@ -95,13 +96,15 @@ export default {
             isOver: false,
             gameOver: false,
             counter: 3,
-            answers: []
+            answers: [],
+            questionCounter: 0,
+            mutableQuestionList: []
         };
     },
 
     methods: {
-        click(answer) {
-            if (answer === "A") {
+        updateScore(success) {
+            if (success) {
                 this.multiplier = this.timer / 15;
                 console.log(this.multiplier);
                 this.gain = 100 + Math.floor(30 * this.multiplier);
@@ -116,6 +119,12 @@ export default {
                     this.gameOver = true;
                 }
             }
+            this.questionCounter++;
+        },
+        updateQuestionList(newQuestions) {
+            console.log("UpdateQuestionList");
+            console.log(newQuestions.length);
+            this.mutableQuestionList = this.mutableQuestionList.concat(newQuestions);
         },
         nextQuestion() {
             this.isQuestionDone = false;
@@ -154,6 +163,11 @@ export default {
                 this.ingameTimer();
             }
         }, 1000);
+    },
+    computed: {
+        allQuestionsList() {
+            return this.questions.concat(this.mutableQuestionList);
+        }
     }
 };
 // [{frage1},{frage2}]
