@@ -34,5 +34,13 @@ export default {
 }
 body {
     overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+html {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 </style>
