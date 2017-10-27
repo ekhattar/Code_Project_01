@@ -33,14 +33,9 @@ export default {
     box-sizing: border-box;
 }
 body {
+    height: 100%;
     overflow: hidden;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-html {
-    overflow: hidden;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    width: 100%;
+    position: fixed;
 }
 </style>
