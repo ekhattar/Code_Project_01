@@ -18,12 +18,34 @@
             <negresult v-bind:onEndGame="() => {endGame()}" v-bind:onNextQuestion="() => {nextQuestion()}"></negresult>
         </transition>
     </div>
-    <div v-else class="container1">
-        <p>{{ counter }}</p>
+    <div v-else class="container-timer">
+        <span class="timer">{{counter}}</span>
     </div>
+    
 </template>
 
 <style scoped lang="sass">
+
+    .container-timer
+        border-radius: 50px
+        background: #323035
+        width: 96px
+        height: 96px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        display: flex
+        justify-content: center
+        align-items: center
+
+    .timer
+        font:
+            size: 56px
+            family: "Roboto Slab"
+        background: -webkit-linear-gradient(#FDD07C, #DE9B32)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
 
     .slideInLeft-enter, .slideInLeft-enter-active
         transition: all 0.3s ease-out
