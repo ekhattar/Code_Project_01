@@ -140,9 +140,9 @@ export default {
                 let diff = (this.firstQuestionList.length - 1) - this.questionCounter;
                 console.log("checkAnswer");
                 console.log(this.firstQuestionList.length);
-                //if (diff < 8) {
+                if (diff < 4) {
                     this.getNextQuestions();
-                //}
+                }
             }, 400);
         },
         checkAnswer(answer, event) {
