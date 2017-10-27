@@ -1,11 +1,11 @@
 <script>
 export default {
-    props: ["title","onClick"]
+    props: ["title","onClick","checkSubmit"]
 };
 </script>
 
 <template>
-	<button class="btn" @click="onClick">{{title}}</button>
+	<button class="btn" @click="onClick" :disabled="checkSubmit">{{title}}</button>
 </template>
 
 <style scoped lang="sass">
