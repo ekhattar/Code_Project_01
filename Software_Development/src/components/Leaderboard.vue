@@ -31,7 +31,7 @@ export default {
         }
     },
     created() {
-        Http.get(`/leaderboard`)
+        Http.get(`/leaderboard?name=TimonTest`)
             .then(data => {
                 this.leaders = data.data.leaders;
                 for (var i = 0; i < 10; i++) {
