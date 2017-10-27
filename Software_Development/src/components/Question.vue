@@ -113,7 +113,7 @@
 import { Event } from "../event.js";
 import HTTP from '../http-rest.js';
 export default {
-    props: ['updateScore','firstQuestionList','updateQuestionList','questionCounter'],
+    props: ['updateScore','firstQuestionList','updateQuestionList','questionCounter','timer'],
     name: "question",
     data() {
         return {

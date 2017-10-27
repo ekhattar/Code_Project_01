@@ -88,7 +88,7 @@ export default {
             lifes: 3,
             score: 0,
             gain: 0,
-            timer: 10,
+            timer: 15,
             multiplier: 0,
             isCounterStarted: false,
             isQuestionDone: false,
