@@ -5,7 +5,7 @@
             <li class="score">Score: {{ score }}</li>
         </ul>
         <div v-if="!isQuestionDone">
-            <question v-bind:onClick="(arg) => {click(arg)}"></question>
+            <question v-bind:questionList="questions" :updateScore="(arg) => {updateScore(arg)}"></question>
         </div>
         <div v-else>
             <result v-bind:onNextQuestion="() => {nextQuestion()}"></result>
@@ -38,9 +38,11 @@ import Question from './Question.vue';
         },
 
         methods: {
-            click(answer) {
-                if(answer === 'A') {
-                    this.isQuestionDone = true;
+            updateScore(success) {
+                if(success) {
+                    this.score++;
+                } else {
+                    this.score--;
                 }
             },
             nextQuestion() {
