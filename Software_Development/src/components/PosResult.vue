@@ -1,6 +1,6 @@
 <template>
 	<div class="container-result">
-        <p style="text-align: center" class="correct"><span class="white">Yeah that’s,</br></span> CORRECT!</p>
+        <p style="text-align: center" class="correct"><span class="white">{{currentText}}</br></span> CORRECT</p>
         <div class="points"> + {{ gain }} Points!</div>
         <uiButton class="btn2" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>
     </div>
@@ -60,8 +60,9 @@
         font-style: normal;
         font-weight: bold;
         line-height: normal;
-        font-size: 42px;
+        font-size: 48px;
         text-align: center;
+        letter-spacing: 1.2px
 
         color: #1FB363;
         text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -69,7 +70,7 @@
     .white
         color: #FFFFFF;
         font-weight: normal;
-        font-size: 32px;
+        font-size: 28px;
 
 </style>
 
@@ -81,9 +82,22 @@ export default {
     components: { uiButton },
     data() {
         return {
-            name: "posresult"
+            name: "posresult",
+            texts: [
+                "Yeah that's",
+                "You rock!",
+                "Well done!",
+                "Congrats!",
+                "Nice!"
+            ],
+            currentText: ""
         };
     },
-    props: ["onNextQuestion", "onEndGame", "gain"]
+    props: ["onNextQuestion", "onEndGame", "gain"],
+    mounted: function() {
+        const rand = Math.floor(Math.random() * this.texts.length);
+        console.log(rand);
+        this.currentText = this.texts[rand];
+    }
 };
 </script>
