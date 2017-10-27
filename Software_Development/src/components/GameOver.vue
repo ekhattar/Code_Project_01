@@ -5,6 +5,7 @@
             <p>{{ score }}</p> 
             <p class="score-text">Final Score</p>
         </div>
+        <div v-if="submitted"> {{ submitmsg }} </div>
         <input type="text" class="input" v-model="username" placeholder="Type a Nickname">
         <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
         <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
@@ -100,18 +101,22 @@ export default {
             email: "timon@test",
             url: "/quiz-result?",
             username: '',
+            submitted: false,
+            submitmsg: '',
         };
     },
     props: ["onNextQuestion", "score"],
     methods: {
         submitScore() {
-            this.url = this.url + "points=" + this.score + "&name=" + this.username;
+            this.url = this.url + "points=" + this.score + "&nams=" + this.username;
             Http.post(this.url)
-                .then(function(response) {
-                    console.log(response)
+                .then( (response) => {
+                    this.submitmsg = "You submitted your score sucessful to the Leaderboard";
+                    this.submitted = true;
                 })
-                .catch(function(error) {
-                    console.log(error);
+                .catch( (error) => {
+                    this.submitmsg = "Error! Please try again or contact the administrator";
+                    this.submitted = true;
                 });
         }
     }
