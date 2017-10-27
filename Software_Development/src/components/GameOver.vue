@@ -1,12 +1,18 @@
 <template>
 	<div class="container-gameover">
+        <div v-if="submitted" class="submit-msg-container"> 
+            <div class="submit-msg">
+                <p>{{ submitmsg }}</p>
+                <router-link class="btn-small" to="/welcome">Main Menu</router-link>
+                <router-link class="btn-small" to="/leaderboard">Leaderboard</router-link>
+            </div>
+        </div>
         <p class="text">Game Over!</p><br>
         <div class="score">
             <p>{{ score }}</p> 
             <p class="score-text">Final Score</p>
         </div>
-        <div v-if="submitted"> {{ submitmsg }} </div>
-        <input type="text" class="input" v-model="username" placeholder="Type a Nickname">
+        <input type="text" class="input" required v-model="username" placeholder="Type a Nickname">
         <uiButton v-bind:onClick="() => {submitScore()}" title="Submit Score"></uiButton>
         <div v-if="inputError"> {{ inputErrorMsg }}</div>
         <router-link to="/welcome"><uiButton class="btn-bottom" title="Main Menu"></uiButton></router-link>    
@@ -14,6 +20,45 @@
 </template>
 
 <style scoped lang="sass">
+    .submit-msg-container
+        position: fixed
+        background: rgba(black, 0.4)
+        z-index: 2
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+
+    .submit-msg
+        position: fixed
+        padding: 32px
+        padding-top: 48px
+        padding-bottom: 48px
+        background: white
+        z-index: 2
+        width: calc(100vw - 48px)
+        border-radius: 6px
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        font:
+            family: "Source Sans Pro"
+            size: 18px
+        line-height: 1.4
+        p
+            margin-bottom: 6px
+
+
+    .btn-small
+        padding: 16px
+        background: #323035
+        display: inline-block
+        color: #EDEDEE
+        text-decoration: none
+        border-radius: 6px
+        width: 100%
+        text-align: center
+        margin-top: 12px
 
     .input
         background: none
@@ -101,7 +146,7 @@ export default {
             name: "gameover",
             email: "timon@test",
             url: "/quiz-result?",
-            username: '',
+            username: "",
             submitted: false,
             inputError: false,
             submitmsg: '',
