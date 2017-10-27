@@ -37,6 +37,8 @@
 				 this.question = this.questionList[this.counter];
 
                  let diff = (this.questionList.length-1) - this.counter;
+                 console.log("checkAnswer");
+                 console.log(this.questionList.length);
 				 if(diff < 8) {
                      this.getNextQuestions();
 				 }
@@ -56,7 +58,7 @@
 						 console.log(this.questionList);
                          this.questionList = this.questionList.concat(response.data.questions);
                          console.log("QuestionsList: ");
-                         console.log(this.questionList.length);
+                         console.log(this.questionList);
                      })
                      .catch(e => {
                          console.log(e);
