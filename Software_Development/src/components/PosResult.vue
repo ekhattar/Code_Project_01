@@ -1,5 +1,9 @@
 <template>
 	<div class="container-result">
+        <div class="currentscore-container">
+            <p>{{score}}</p>
+            <p>Current Score</p>
+        </div>
         <p style="text-align: center" class="correct"><span class="white">{{currentText}}</br></span> CORRECT</p>
         <div class="points"> + {{ gain }} Points!</div>
         <uiButton class="btn2" v-bind:onClick="onNextQuestion" title="Next Question"></uiButton>
@@ -7,6 +11,25 @@
 </template>
 
 <style lang="sass">
+
+    .currentscore-container
+        position: absolute
+        top: 48px
+        width: 100%
+        color: #EDEDEE
+        text-align: center
+        font: 
+            size: 16px
+            family: "Source Sans Pro"
+        
+        p
+            opacity: 0.8
+            margin-bottom: 8px
+            &:first-child
+                opacity: 1
+                font: 
+                    size: 32px
+                    family: "Roboto Slab"
 
     .container-result
         height: calc(100vh - 58px - 24px)
@@ -93,7 +116,7 @@ export default {
             currentText: ""
         };
     },
-    props: ["onNextQuestion", "onEndGame", "gain"],
+    props: ["onNextQuestion", "onEndGame", "gain", "score"],
     mounted: function() {
         const rand = Math.floor(Math.random() * this.texts.length);
         console.log(rand);

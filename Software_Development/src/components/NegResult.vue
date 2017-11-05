@@ -1,5 +1,9 @@
 <template>
 	<div class="container-result">
+        <div class="currentscore-container">
+            <p>{{score}}</p>
+            <p>Current Score</p>
+        </div>
         <p style="text-align: center" class="incorrect"><span class="white">{{currentText}}</br></span> WRONG!</p>
         <div class="container-hearts">
             <i v-for="n in lifes" ref="heart" class="fa fa-heart heart"></i>
@@ -16,7 +20,7 @@ import { Event } from "../event.js";
 import uiButton from "./ui_elements/Button.vue";
 
 export default {
-    props: ["onNextQuestion", "onEndGame", "lifes"],
+    props: ["onNextQuestion", "onEndGame", "lifes", "score"],
     name: "negresult",
     components: { uiButton },
     data() {
@@ -49,6 +53,22 @@ export default {
 </script>
 
 <style lang="sass">
+
+    .currentscore-container
+        position: absolute
+        top: 48px
+        width: 100%
+        color: #EDEDEE
+        text-align: center
+        font: 
+            size: 16px
+            family: "Source Sans Pro"
+        p
+            margin-bottom: 12px
+            &:first-child
+                font: 
+                    size: 32px
+                    family: "Roboto Slab"
 
     .container-result
         height: calc(100vh - 58px - 24px)
